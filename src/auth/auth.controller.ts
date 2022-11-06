@@ -9,6 +9,7 @@ import {
 
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { AuthService } from './auth.service';
+import { CurrentUser } from './decorators/currentUser.decorator';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 
@@ -23,8 +24,8 @@ export class AuthController {
 
   @Get('profile')
   @UseGuards(JwtAuthGuard)
-  profile(@Request() req) {
-    return req.user;
+  profile(@CurrentUser() currentUser) {
+    return currentUser;
   }
 
   @Post('login')
