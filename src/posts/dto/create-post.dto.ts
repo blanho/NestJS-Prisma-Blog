@@ -12,7 +12,5 @@ export class CreatePostDto {
   @MinLength(3)
   description: string;
 
-  @IsNotEmpty()
-  @IsString()
-  userId: string;
+  categories: string[];
 }
